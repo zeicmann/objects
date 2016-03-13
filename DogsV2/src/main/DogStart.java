@@ -29,14 +29,14 @@ public class DogStart {
 		input.getUserInput(s);
 		this.generateDogsArray(input.getCount(), input.getNames());		
 		
-		
+		/*
 		Sort sort = new Sort();
 		sort.selectionSort(this.dogs, new SortByAge().reversed());
+		*/
 		
-		/*
 		SortUsingComparable sort = new SortUsingComparable();
 		sort.selectionSort(this.dogs);
-		*/
+		
 		
 		for (Dog d: this.dogs){
 			System.out.println(d.toString());

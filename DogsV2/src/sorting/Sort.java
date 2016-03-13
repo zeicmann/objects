@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class Sort  {
 	
-	public <E, T extends Comparator<E>> void selectionSort(E arr[], T param){
+	public <E> void selectionSort(E arr[], Comparator<E> param){
 		
 		for (int i = 0; i<arr.length-1; i++){
 			int indMin = i;

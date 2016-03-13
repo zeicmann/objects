@@ -2,7 +2,7 @@ package generator;
 
 import java.util.Random;
 
-public class Dog implements Comparable<Object>{
+public class Dog implements Comparable<Dog>{
 	private String dogName;
 	private int dogAge;
 	private DogSize dogSize;
@@ -123,10 +123,9 @@ public class Dog implements Comparable<Object>{
 	}
 
 	@Override
-	public int compareTo(Object o) {
-		Dog dog2 = (Dog)o;
+	public int compareTo(Dog o) {
 		String dogName1 = this.getName();
-		String dogName2 = dog2.getName();
+		String dogName2 = o.getName();
 		return dogName1.compareTo(dogName2);
     }
 		

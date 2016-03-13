@@ -2,7 +2,7 @@ package sorting;
 
 public class SortUsingComparable  {
 	
-	public <T extends Comparable<Object>> void selectionSort(T[] arr){
+	public <T extends Comparable<T>> void selectionSort(T[] arr){
 		
 		for (int i = 0; i<arr.length-1; i++){
 			int indMin = i;
