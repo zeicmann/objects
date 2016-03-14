@@ -1,62 +1,61 @@
 package main;
 
-import main.Start;
-
 public class Circle implements BasicObj{
 	
-	//vars
-	int x;
-	int y;
-	int r;
+	//
+	private Point startPoint;
+	private int r;
 	
-	//methods
-	public Circle(int x, int y, int r){
-		this.x= x; this.y=y; this.r = r;
+	//Create circle with radius r around the point
+	public Circle(Point point, int r){
+		this.startPoint = point; 
+		this.r = this.setR(r);
 	}
 	
+	@Override
 	public double square() {
 		return (Math.PI*Math.pow(this.r, 2))/4;
 	}
-
+	
+	@Override
 	public double perimetr() {
 		return (Math.PI)*(double)this.r;
 	}
-
+	
+	@Override
 	public boolean isInside(int px, int py) {
-		return r/2>Math.sqrt(Math.pow(px-(this.x+r/2), 2)+(Math.pow(py-(this.y+r/2), 2)));
+		return r > Math.sqrt(Math.pow(px - this.startPoint.getX(), 2)+Math.pow(py - this.startPoint.getY(), 2));
 	}
 	
 	public Rectangle boundingBox(){
-		int cxr = (int)(this.getRadius()/2*(1-Math.sin(Math.toRadians(45))));
-		int cyr = (int)(this.getRadius()/2*(1-Math.cos(Math.toRadians(45))));
-		//create new rect
-		Rectangle rect = new Rectangle (this.getX()+cxr, this.getY()+cyr, this.getRadius()-2*cxr-2, this.getRadius()-2*cyr-2);
-		return rect;
+		return new Rectangle(new Point (this.startPoint.getX()-this.r, this.startPoint.getY() - r),
+				new Point (this.startPoint.getX()+this.r, this.startPoint.getY()+this.r));
 	}
 	
-	public int getRadius(){
-		return this.r;
+	private int setR(int r){
+		if (r <= 0){
+			if (r == 0) {
+				System.out.println("Radius can't be 0. Will be changed to default 100.");
+				return 100;
+			} else {
+				System.out.println("Radius can't be negative. Will be taken by abs.");
+				return Math.abs(r);
+			} 
+		} else return r;
 	}
 
-	public void setRadius(int r) {
-		 if (this.r>1 && this.x<Start.scrX-r&&this.y<Start.scrY-r&&this.x>0&&this.y>0) {
-		        this.r = r;
-		    }
-	}
-
-	public int getX() {
-		return this.x;
-	}
-
-	public int getY() {
-		return this.y;
-	}
-
+	@Override
 	public void move(int x, int y) {
-		if (x>0 && x + this.r < Start.scrX && y>0 && y + this.r < Start.scrY){
-			this.x = x;
-			this.y = y;
-		}
+		this.startPoint.setX(this.startPoint.getX() + x);
+		this.startPoint.setY(this.startPoint.getY() + y);
+	}
+	
+	public Point getStartPoint(){
+		return this.startPoint;
+	}
+	
+	public Point getEndPoint(){
+		return this.getEndPoint();
 	}
 
 }

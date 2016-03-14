@@ -1,58 +1,53 @@
 package main;
 
-import main.Start;
-
 public class Rectangle implements BasicObj{
 	
 	//vars
-	private int x;
-	private int y;
-	private int w;
-	private int h;
+	private Point startPoint;
+	private Point endPoint;
+	private double upRib;
+	private double sideRib;
 	
 	//Cons
-	public Rectangle(int x, int y, int w, int h){
-		this.x = x; this.y = y; this.h = h; this.w = w;
+	public Rectangle(Point start, Point end){
+		this.startPoint = start; this.endPoint = end;
+		this.upRib = this.getUpperSide();
+		this.sideRib = this.getSideSide();
 	}
 	
 	//Methods
+	@Override
 	public double square(){
-		return (double)(this.w*this.h);
+		return this.upRib*this.sideRib;
 	}
 	
+	@Override
 	public double perimetr(){
-		return (double)(2*(this.w+this.h));
+		return 2*(this.upRib+this.sideRib);
 	}
 	
+	@Override
 	public boolean isInside(int px, int py){
-		boolean isIn =false;
-		if ((px>=this.x&&px<=this.x+this.w)&&(py>=this.y&&py<=this.h+this.y)){
-			isIn = true;
-		}
-		return isIn;
+		return IsBetween.check(this.startPoint.getX(), this.endPoint.getX(), px) &&
+				IsBetween.check(this.startPoint.getY(), this.endPoint.getY() , py);
 	}
 	
-	public int getW(){
-		return this.w;
-	}
-	
-	public int getH(){
-		return this.h;
-	}
-
-	public int getX() {
-		return this.x;
-	}
-
-	public int getY() {
-		return this.y;
-	}
-
+	@Override
 	public void move(int x, int y) {
-		if (x>0 && x < Start.scrX - this.w && y>0 && y < Start.scrY - this.h){
-			this.x = x;
-			this.y = y;
-		}
+		
+		this.startPoint.setX(this.startPoint.getX() + x);
+		this.endPoint.setX(this.endPoint.getX() + x);
+		
+		this.startPoint.setY(this.startPoint.getY() + y);
+		this.endPoint.setY(this.endPoint.getY()+y);
+	}
+	
+	private double getUpperSide(){
+		return Math.abs(this.startPoint.getX()) + Math.abs(this.endPoint.getX());
+	}
+	
+	private double getSideSide(){
+		return Math.abs(this.startPoint.getY()) + Math.abs(this.endPoint.getY());
 	}
 	
 }
