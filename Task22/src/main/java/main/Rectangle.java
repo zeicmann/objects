@@ -43,11 +43,19 @@ public class Rectangle implements BasicObj{
 	}
 	
 	private double getUpperSide(){
-		return Math.abs(this.startPoint.getX()) + Math.abs(this.endPoint.getX());
+		return Math.abs(this.startPoint.getX()) - Math.abs(this.endPoint.getX());
 	}
 	
 	private double getSideSide(){
-		return Math.abs(this.startPoint.getY()) + Math.abs(this.endPoint.getY());
+		return Math.abs(this.startPoint.getY()) - Math.abs(this.endPoint.getY());
+	}
+	
+	public Point getStartPoint(){
+		return this.startPoint;
+	}
+	
+	public Point getEndPoint(){
+		return this.endPoint;
 	}
 	
 }

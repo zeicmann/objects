@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import main.Circle;
 import main.Point;
+import main.Rectangle;
 
 public class CircleTest {
 	
@@ -39,6 +40,13 @@ public class CircleTest {
 	@Test
 	public void isInsideTestNegative2(){
 		assertFalse(this.circle.isInside(100, 150));
+	}
+	
+	@Test
+	public void boundingBoxTest(){
+		Rectangle test = circle.boundingBox();
+		assertTrue(Math.abs(test.square() - Math.pow(circle.getRadius()*2,2))<0.000000000001);
+		assertEquals(circle.getStartPoint().getX() - circle.getRadius(), test.getStartPoint().getX());
 	}
 	
 	@Test

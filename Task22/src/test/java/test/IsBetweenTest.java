@@ -32,10 +32,4 @@ public class IsBetweenTest {
 	public void testPositive2() {
 		assertTrue(IsBetween.check(10, 5, 7));
 	}
-	
-	@Test
-	public void testPositive3() {
-		assertTrue(IsBetween.check(5, 5, 5));
-	}
-
 }
