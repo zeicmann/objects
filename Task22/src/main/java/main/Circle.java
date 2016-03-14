@@ -19,7 +19,7 @@ public class Circle implements BasicObj{
 	
 	@Override
 	public double perimetr() {
-		return (Math.PI)*(double)this.r;
+		return 2*(Math.PI)*(double)this.r;
 	}
 	
 	@Override
@@ -54,8 +54,8 @@ public class Circle implements BasicObj{
 		return this.startPoint;
 	}
 	
-	public Point getEndPoint(){
-		return this.getEndPoint();
+	public int getRadius(){
+		return this.r;
 	}
 
 }
