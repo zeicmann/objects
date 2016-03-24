@@ -23,4 +23,17 @@ public class Record {
 	public String getName(){
 		return this.name;
 	}
+	
+	//print
+	public void printName(){
+		System.out.println(this.getName());
+	}
+	
+	public void printAddress(){
+		System.out.println(this.address.getAddress());
+	}
+	
+	public void printPhoneNumber(){
+		System.out.println(this.number.getNumber());
+	}
 }
