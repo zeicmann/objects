@@ -1,5 +1,5 @@
 package phone;
 
 public interface BasicPhone {
-	public BasicPhone getPhoneNumber();
+	public String getPhoneNumber();
 }
