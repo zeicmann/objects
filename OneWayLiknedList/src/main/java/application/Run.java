@@ -14,13 +14,14 @@ public class Run {
 		OneWayLinkedList<String> list1 = new OneWayLinkedList<>();
 		OneWayLinkedList<String> list2 = new OneWayLinkedList<>();
 		
-		list1.add("asdnk");
-		list1.add("asdnk");
-		list1.add("csdnk");
+		String str1 = "asdnk asdnk asdnk";
+		String str2 = "asdnk bjsdf";
 		
-		list2.add("asdnk");
-		list2.add("asdnk");
-		list2.add("bjsdf");
+		String[] str1Data = str1.trim().split(" ");
+		String[] str2Data = str2.trim().split(" ");
+		
+		Run.addToList(list1, str1Data);
+		Run.addToList(list2, str2Data);
 		
 		set.add(list2);
 		set.add(list1);
@@ -29,5 +30,10 @@ public class Run {
 			System.out.println(l.toString());
 		}
 	}
-
+	
+	public static <E> void addToList(OneWayLinkedList<E> list, E[] elements){
+		for (E e: elements){
+			list.add(e);
+		}
+	}
 }
